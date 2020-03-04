@@ -3,17 +3,21 @@ import './App.css';
 
 function PeoplesLI({ Peoples, DeletePeople }) {
   return (
-    Peoples.map(P => (
-      <li key={P.url} className="Header" >
-        <h3 style={{ 'color': P.eye_color, textDecoration: 'underline' }}>{P.name}</h3>
-        <h4>Olhos: {P.hair_color}</h4>
-        <h4>Nasc: {P.birth_year}</h4>
-        <h5>Genêro: {P.gender}</h5>
-        <button onClick={() => (
-          DeletePeople(P.url)
-        )}>Excluir</button>
-      </li>
-    ))
+    <>
+      {(Peoples.length < 1) ? <div className="Container_h1"><h1> Nenhum registro encontrado!</h1></div> :
+        Peoples.map(P => (
+          <li key={P.url} className="Header" >
+            <h3 style={{ 'color': P.eye_color, textDecoration: 'underline' }}>{P.name}</h3>
+            <h4>Olhos: {P.hair_color}</h4>
+            <h4>Nasc: {P.birth_year}</h4>
+            <h5>Genêro: {P.gender}</h5>
+            <button onClick={() => (
+              DeletePeople(P.url)
+            )}>Excluir</button>
+          </li>
+        ))}
+
+    </>
   )
 }
 
